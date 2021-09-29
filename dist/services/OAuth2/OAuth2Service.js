@@ -43,13 +43,8 @@ class OAuth2Service{
                     },
                 }
             )
-            .then((res) => res.data)
-            .catch((error) => {
-                console.error(`Failed to fetch user`);
-                throw new Error(error.message);
-            });
     
-        return googleUser;
+        return googleUser.data;
     }
 }
 

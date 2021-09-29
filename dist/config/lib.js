@@ -15,16 +15,13 @@ const getTokens = async(code, clientId, clientSecret, redirectUri) => {
         grant_type: "authorization_code",
     };
 
-    return axios.post(  url, querystring.stringify(values), {
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-        })
-        .then((res) => res.data)
-        .catch((error) => {
-            console.error(`Failed to fetch auth tokens`);
-            throw new Error(error.message);
-        });
+    const result = await axios.post(  url, querystring.stringify(values), {
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+    });
+    
+    return result.data;
 }
 
 module.exports.getTokens = getTokens;
